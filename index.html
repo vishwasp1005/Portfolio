@@ -5,18 +5,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Vishwas Patel — AI/ML Engineer. Portfolio of LLM, NLP, semantic search, and full-stack AI projects." />
+    content="Vishwas Patel — AI/ML Engineer. Portfolio of LLM, GenAI, RAG systems, NLP, semantic search, and production AI projects." />
   <meta name="author" content="Vishwas Patel" />
   <meta name="keywords"
-    content="Vishwas Patel, AI Engineer, ML Engineer, LLM, NLP, FastAPI, React, Python, Portfolio" />
+    content="Vishwas Patel, AI Engineer, ML Engineer, LLM, GenAI, RAG, NLP, FastAPI, React, Python, Portfolio" />
   <meta property="og:title" content="Vishwas Patel | AI/ML Engineer Portfolio" />
   <meta property="og:description"
-    content="Building AI-powered applications with LLMs, NLP, semantic search systems, and scalable backend architectures." />
+    content="AI/ML Engineer specializing in LLMs, GenAI, and RAG systems — building production-grade AI pipelines and scalable backends." />
   <meta property="og:type" content="website" />
   <title>Vishwas Patel | AI/ML Engineer Portfolio</title>
 
-  <link rel="icon" type="image/png" href="assets/images/avatar.png" />
-  <link rel="apple-touch-icon" href="assets/images/avatar.png" />
+  <link rel="icon" type="image/png" href="/assets/images/avatar.png" />
+  <link rel="apple-touch-icon" href="/assets/images/avatar.png" />
 
   <!-- Space Grotesk (headings) + Outfit (UI) — modern, space-themed -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,7 +48,7 @@
       },
     };
   </script>
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
 <body class="font-sans antialiased relative font-normal bg-zinc-950 min-h-screen">
@@ -65,7 +65,7 @@
         <li><a href="#education" class="hover:text-lilac transition" data-testid="nav-education">Education</a></li>
         <li><a href="#contact" class="hover:text-lilac transition" data-testid="nav-contact">Contact</a></li>
         <li>
-          <a href="assets/docs/Vishwas_Patel_Resume.pdf" download="Vishwas_Patel_Resume.pdf"
+          <a href="/assets/docs/Vishwas_Patel_Resume.pdf" download="Vishwas_Patel_Resume.pdf"
             class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-lilac text-paper hover:opacity-90 transition"
             data-testid="navbar-resume-download">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
@@ -93,7 +93,7 @@
         <li><a href="#education" data-testid="mobile-nav-education">Education</a></li>
         <li><a href="#contact" data-testid="mobile-nav-contact">Contact</a></li>
         <li>
-          <a href="assets/docs/Vishwas_Patel_Resume.pdf" download="Vishwas_Patel_Resume.pdf"
+          <a href="/assets/docs/Vishwas_Patel_Resume.pdf" download="Vishwas_Patel_Resume.pdf"
             class="inline-flex items-center gap-2 text-blush font-semibold"
             data-testid="mobile-nav-resume-download">Download Resume</a>
         </li>
@@ -113,7 +113,7 @@
         <div class="flex justify-center mb-8">
           <div
             class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-lilac/20 shadow-[0_20px_60px_-15px_rgba(56,189,248,0.45)] ring-4 ring-blush/15">
-            <img src="assets/images/avatar.png" alt="Vishwas Patel — AI/ML Engineer"
+            <img src="/assets/images/avatar.png" alt="Vishwas Patel — AI/ML Engineer"
               class="w-full h-full object-cover" data-testid="hero-avatar" />
           </div>
         </div>
@@ -121,29 +121,30 @@
           AI / ML Engineer
         </p>
         <h1
-          class="font-display text-6xl sm:text-8xl md:text-9xl font-bold bg-gradient-to-r from-lilac via-lilac to-blush bg-clip-text text-transparent leading-[0.95] mb-10 tracking-tighter"
+          class="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold bg-gradient-to-r from-lilac via-lilac to-blush bg-clip-text text-transparent leading-[0.95] mb-10 tracking-tighter"
           data-testid="hero-name">
           Vishwas Patel
         </h1>
         <p
-          class="text-xl sm:text-3xl font-sans font-medium text-lilac/90 mb-12 leading-relaxed max-w-3xl mx-auto tracking-tight">
-          LLMs &amp; NLP
-          <span class="text-blush font-light mx-3 opacity-50">/</span>
-          Semantic Search
-          <span class="text-blush font-light mx-3 opacity-50">/</span>
-          Scalable Backend
+          class="text-lg sm:text-2xl md:text-3xl font-sans font-medium text-lilac/90 mb-12 leading-relaxed max-w-3xl mx-auto tracking-tight">
+          LLMs &amp; GenAI
+          <span class="text-blush font-light mx-2 sm:mx-3 opacity-50">/</span>
+          RAGs
+          <span class="text-blush font-light mx-2 sm:mx-3 opacity-50">/</span>
+          Real-World Projects
         </p>
 
-        <p class="text-lilac/60 max-w-2xl mx-auto mb-12 leading-relaxed text-base sm:text-lg"
+        <p class="text-lilac/60 max-w-2xl mx-auto mb-12 leading-relaxed text-sm sm:text-base md:text-lg px-2"
           data-testid="hero-tagline">
-          Building AI-powered applications with LLMs, NLP, semantic search systems,
-          and scalable backend architectures.
+          Specializing in LLMs, GenAI, and RAG pipelines — I engineer AI applications
+          that move from research to production. FastAPI backends, semantic search, and
+          intelligent systems built for real-world scale.
         </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full max-w-md sm:max-w-none mx-auto px-4 sm:px-0">
           <a href="#projects"
             class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-2xl font-bold text-paper bg-lilac shadow-[0_20px_50px_-15px_rgba(var(--color-lilac),0.3)] hover:scale-105 active:scale-95 transition-all"
             data-testid="hero-view-projects-btn">View Projects</a>
-          <a href="assets/docs/Vishwas_Patel_Resume.pdf" download="Vishwas_Patel_Resume.pdf"
+          <a href="/assets/docs/Vishwas_Patel_Resume.pdf" download="Vishwas_Patel_Resume.pdf"
             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-bold text-paper bg-blush shadow-[0_20px_50px_-15px_rgba(56,189,248,0.45)] hover:scale-105 active:scale-95 transition-all"
             data-testid="hero-download-resume-btn">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
@@ -176,20 +177,20 @@
 
 
       <div class="relative z-10 max-w-5xl mx-auto w-full py-20 md:py-32 text-center reveal">
-        <h2 class="font-display text-5xl sm:text-7xl md:text-8xl font-bold text-lilac mb-12 tracking-tight">
+        <h2 class="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-lilac mb-12 tracking-tight">
           About Me
         </h2>
 
         <div class="max-w-4xl mx-auto">
 
 
-          <p class="text-2xl sm:text-3xl font-sans font-semibold text-lilac/95 leading-snug mb-10 tracking-tight">
+          <p class="text-xl sm:text-2xl md:text-3xl font-sans font-semibold text-lilac/95 leading-snug mb-10 tracking-tight">
             AI/ML Engineer and B.Tech Computer Science student at Darshan University,
             focused on building intelligent systems with LLMs, NLP, and semantic
             search. Experienced in shipping ATS intelligence platforms, AI-powered
             assessment systems, and production-ready backend architectures.
           </p>
-          <p class="text-2xl sm:text-1xl font-sans font-semibold text-lilac/95 leading-snug mb-10 tracking-tight">
+          <p class="text-lg sm:text-xl font-sans font-semibold text-lilac/95 leading-snug mb-10 tracking-tight">
 
             <span class="text-blush">I enjoy turning ambiguous problems into deployable AI workflows — clean code,
               robust pipelines, and measurable impact. Currently exploring opportunities as an AI/ML Engineer or
@@ -198,7 +199,7 @@
         </div>
 
         <!-- Features Row -->
-        <div class="flex flex-wrap justify-center gap-6 mb-16">
+        <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mb-16">
           <div class="glass-panel px-8 py-5 rounded-[2rem] border-lilac/10 bg-lilac/5 hover:bg-lilac/10 transition-all">
             <p class="text-[0.6rem] font-bold text-lilac/40 uppercase tracking-[0.2em] mb-2">Education</p>
             <p class="text-lg font-bold text-lilac">Darshan University</p>
@@ -366,14 +367,14 @@
 
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="mb-14 reveal text-center">
-          <h2 class="font-section-title text-7xl font-extrabold text-lilac tracking-tight">Projects</h2>
+          <h2 class="font-section-title text-4xl sm:text-5xl md:text-7xl font-extrabold text-lilac tracking-tight">Projects</h2>
           <p class="text-lilac/65 mt-2">Selected work — LLM systems, AI assessment, and ML pipelines.</p>
         </div>
         <div id="projects-carousel"
           class="flex overflow-x-auto snap-x snap-mandatory gap-16 px-[10vw] md:px-[15vw] py-12 hide-scrollbar">
 
           <article
-            class="project-card glass-panel rounded-3xl p-10 flex flex-col border border-lilac/10 reveal shrink-0 w-[85vw] md:w-[600px] snap-center"
+            class="project-card glass-panel rounded-3xl p-6 sm:p-10 flex flex-col border border-lilac/10 reveal shrink-0 w-[88vw] sm:w-[85vw] md:w-[600px] snap-center"
             data-testid="project-card-resume-scanner">
             <h3 class="font-project-title text-3xl font-extrabold text-lilac mb-4 tracking-tight">AI Resume Scanner</h3>
             <p class="font-project-body text-lilac/80 text-base leading-relaxed flex-grow mb-6">
@@ -394,7 +395,7 @@
           </article>
 
           <article
-            class="project-card glass-panel rounded-3xl p-10 flex flex-col border border-lilac/10 reveal shrink-0 w-[85vw] md:w-[600px] snap-center"
+            class="project-card glass-panel rounded-3xl p-6 sm:p-10 flex flex-col border border-lilac/10 reveal shrink-0 w-[88vw] sm:w-[85vw] md:w-[600px] snap-center"
             data-testid="project-card-pdf-mcq">
             <h3 class="font-project-title text-3xl font-extrabold text-lilac mb-4 tracking-tight">AI PDF-to-MCQ
               Generator</h3>
@@ -418,7 +419,7 @@
           </article>
 
           <article
-            class="project-card glass-panel rounded-3xl p-10 flex flex-col border border-lilac/10 reveal shrink-0 w-[85vw] md:w-[600px] snap-center"
+            class="project-card glass-panel rounded-3xl p-6 sm:p-10 flex flex-col border border-lilac/10 reveal shrink-0 w-[88vw] sm:w-[85vw] md:w-[600px] snap-center"
             data-testid="project-card-loan-risk">
             <h3 class="font-project-title text-3xl font-extrabold text-lilac mb-4 tracking-tight">Loan Risk Prediction
               System</h3>
@@ -547,12 +548,12 @@
             good conversation.
           </p>
           <div
-            class="glass-panel rounded-3xl p-8 border border-lilac/10 flex flex-col sm:flex-row justify-between text-left gap-8">
+            class="glass-panel rounded-3xl p-5 sm:p-8 border border-lilac/10 flex flex-col sm:flex-row justify-between text-left gap-6 sm:gap-8">
             <div class="space-y-6 flex-1">
               <div>
                 <span class="text-lilac/60 text-sm block mb-1">Email</span>
                 <a href="mailto:patelvishwas702@gmail.com"
-                  class="font-medium text-lilac underline decoration-lilac/25 hover:decoration-lilac/60 break-all"
+                  class="font-medium text-lilac underline decoration-lilac/25 hover:decoration-lilac/60 break-all text-sm sm:text-base"
                   data-testid="contact-email">patelvishwas702@gmail.com</a>
               </div>
               <div>
@@ -587,7 +588,7 @@
             </div>
           </div>
           <div class="mt-8 flex justify-center">
-            <a href="assets/docs/Vishwas_Patel_Resume.pdf" download="Vishwas_Patel_Resume.pdf"
+            <a href="/assets/docs/Vishwas_Patel_Resume.pdf" download="Vishwas_Patel_Resume.pdf"
               class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-bold text-paper bg-blush shadow-[0_20px_50px_-15px_rgba(56,189,248,0.45)] hover:scale-105 active:scale-95 transition-all"
               data-testid="contact-download-resume">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
@@ -612,7 +613,7 @@
 
   <div id="root"></div>
 
-  <script src="js/main.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 
 </html>
