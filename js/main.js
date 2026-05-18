@@ -10,15 +10,27 @@
   const mobileNav = document.getElementById("mobile-nav");
 
   if (navBtn && mobileNav) {
-    navBtn.addEventListener("click", () => {
-      const open = mobileNav.classList.toggle("hidden");
-      navBtn.setAttribute("aria-expanded", String(!open));
+    navBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = mobileNav.classList.toggle("hidden");
+      navBtn.setAttribute("aria-expanded", String(!isOpen));
     });
+
     mobileNav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         mobileNav.classList.add("hidden");
         navBtn.setAttribute("aria-expanded", "false");
       });
+    });
+
+    // Close mobile nav when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!mobileNav.classList.contains("hidden") &&
+          !mobileNav.contains(e.target) &&
+          !navBtn.contains(e.target)) {
+        mobileNav.classList.add("hidden");
+        navBtn.setAttribute("aria-expanded", "false");
+      }
     });
   }
 
@@ -62,19 +74,38 @@
         },
         {
           root: carousel,
-          threshold: 0.6, // Fire when mostly centered
+          threshold: 0.55,
         }
       );
       cards.forEach((card) => io.observe(card));
     }
 
-    // Horizontal Scroll with Mouse Wheel
+    // Horizontal scroll with mouse wheel — desktop only
+    const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
+
     carousel.addEventListener("wheel", (e) => {
-      if (e.deltaY !== 0) {
+      if (e.deltaY !== 0 && !isMobile()) {
         carousel.scrollLeft += e.deltaY;
         e.preventDefault();
       }
-    });
+    }, { passive: false });
+
+    // Touch: allow native horizontal swipe, prevent vertical interference
+    let touchStartX = 0;
+    let touchStartY = 0;
+    carousel.addEventListener("touchstart", (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    carousel.addEventListener("touchmove", (e) => {
+      const dx = Math.abs(e.touches[0].clientX - touchStartX);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY);
+      if (dx > dy) {
+        // Horizontal swipe — prevent page scroll, let carousel scroll
+        e.stopPropagation();
+      }
+    }, { passive: true });
 
     // Clicking a card scrolls it into center
     cards.forEach((card) => {
@@ -82,6 +113,11 @@
         card.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
       });
     });
+
+    // Auto-activate first card on load
+    setTimeout(() => {
+      if (cards[0]) cards[0].classList.add("is-active");
+    }, 300);
   }
 
   /**
@@ -114,7 +150,8 @@
     const starLayer = document.getElementById("stars-layer");
     if (!starLayer) return;
 
-    const STAR_COUNT = 1000; // Increased for clear visibility
+    const isMobileDevice = window.matchMedia("(max-width: 768px)").matches;
+    const STAR_COUNT = isMobileDevice ? 350 : 1000;
     const frag = document.createDocumentFragment();
 
     for (let i = 0; i < STAR_COUNT; i++) {
