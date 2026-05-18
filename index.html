@@ -24,30 +24,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Outfit:wght@300..700&family=Syne:wght@400..800&family=Inter:wght@300..700&family=JetBrains+Mono:wght@400..700&family=Bricolage+Grotesque:wght@800&display=swap"
     rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Outfit"', "system-ui", "sans-serif"],
-            display: ['"Space Grotesk"', "Georgia", "serif"],
-            "project-title": ['"Bricolage Grotesque"', "sans-serif"],
-            "project-body": ['"Inter"', "sans-serif"],
-            "tech-stack": ['"JetBrains Mono"', "monospace"],
-            "section-title": ['"Bricolage Grotesque"', "sans-serif"],
-          },
-          /* RGB triplets on each .theme-* — enables bg-paper/80, text-lilac/60, etc. */
-          colors: {
-            paper: "rgb(var(--color-paper) / <alpha-value>)",
-            blush: "rgb(var(--color-blush) / <alpha-value>)",
-            lilac: "rgb(var(--color-lilac) / <alpha-value>)",
-          },
-        },
-      },
-    };
-  </script>
+  <!-- Tailwind CSS — compiled locally, no CDN dependency -->
+  <link rel="stylesheet" href="/css/tailwind.css" />
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
