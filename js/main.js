@@ -61,6 +61,15 @@
     const cards = document.querySelectorAll(".project-card");
     if (!carousel || !cards.length) return;
 
+    const isMobile = () => window.innerWidth < 768;
+
+    // Mobile: cards are CSS-stacked vertically — activate all, skip carousel logic
+    if (isMobile()) {
+      cards.forEach((card) => card.classList.add("is-active"));
+      return;
+    }
+
+    // Desktop: IntersectionObserver for active card highlight
     if ("IntersectionObserver" in window) {
       const io = new IntersectionObserver(
         (entries) => {
@@ -72,49 +81,27 @@
             }
           });
         },
-        {
-          root: carousel,
-          threshold: 0.55,
-        }
+        { root: carousel, threshold: 0.55 }
       );
       cards.forEach((card) => io.observe(card));
     }
 
-    // Horizontal scroll with mouse wheel — desktop only
-    const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
-
+    // Mouse wheel horizontal scroll on desktop
     carousel.addEventListener("wheel", (e) => {
-      if (e.deltaY !== 0 && !isMobile()) {
+      if (e.deltaY !== 0) {
         carousel.scrollLeft += e.deltaY;
         e.preventDefault();
       }
     }, { passive: false });
 
-    // Touch: allow native horizontal swipe, prevent vertical interference
-    let touchStartX = 0;
-    let touchStartY = 0;
-    carousel.addEventListener("touchstart", (e) => {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-
-    carousel.addEventListener("touchmove", (e) => {
-      const dx = Math.abs(e.touches[0].clientX - touchStartX);
-      const dy = Math.abs(e.touches[0].clientY - touchStartY);
-      if (dx > dy) {
-        // Horizontal swipe — prevent page scroll, let carousel scroll
-        e.stopPropagation();
-      }
-    }, { passive: true });
-
-    // Clicking a card scrolls it into center
+    // Click to center on desktop
     cards.forEach((card) => {
       card.addEventListener("click", () => {
         card.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
       });
     });
 
-    // Auto-activate first card on load
+    // Auto-activate first card
     setTimeout(() => {
       if (cards[0]) cards[0].classList.add("is-active");
     }, 300);
