@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Vishwas Patel — AI/ML Engineer. Portfolio of LLM, NLP, semantic search, and full-stack AI projects." />
+  <meta name="author" content="Vishwas Patel" />
+  <meta name="keywords"
+    content="Vishwas Patel, AI Engineer, ML Engineer, LLM, NLP, FastAPI, React, Python, Portfolio" />
+  <meta property="og:title" content="Vishwas Patel | AI/ML Engineer Portfolio" />
+  <meta property="og:description"
+    content="Building AI-powered applications with LLMs, NLP, semantic search systems, and scalable backend architectures." />
+  <meta property="og:type" content="website" />
+  <title>Vishwas Patel | AI/ML Engineer Portfolio</title>
+
+  <link rel="icon" type="image/png" href="assets/images/avatar.png" />
+  <link rel="apple-touch-icon" href="assets/images/avatar.png" />
+
+  <!-- Space Grotesk (headings) + Outfit (UI) — modern, space-themed -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Outfit:wght@300..700&family=Syne:wght@400..800&family=Inter:wght@300..700&family=JetBrains+Mono:wght@400..700&family=Bricolage+Grotesque:wght@800&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Outfit"', "system-ui", "sans-serif"],
+            display: ['"Space Grotesk"', "Georgia", "serif"],
+            "project-title": ['"Bricolage Grotesque"', "sans-serif"],
+            "project-body": ['"Inter"', "sans-serif"],
+            "tech-stack": ['"JetBrains Mono"', "monospace"],
+            "section-title": ['"Bricolage Grotesque"', "sans-serif"],
+          },
+          /* RGB triplets on each .theme-* — enables bg-paper/80, text-lilac/60, etc. */
+          colors: {
+            paper: "rgb(var(--color-paper) / <alpha-value>)",
+            blush: "rgb(var(--color-blush) / <alpha-value>)",
+            lilac: "rgb(var(--color-lilac) / <alpha-value>)",
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="font-sans antialiased relative font-normal bg-zinc-950 min-h-screen">
+
+  <header class="sticky top-0 z-40 border-b border-lilac/10 bg-paper/60 backdrop-blur-xl text-lilac"
+    data-testid="site-header">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16" aria-label="Main">
+      <a href="#hero" class="font-display font-bold text-xl text-lilac tracking-tight"
+        data-testid="brand-link">Vishwas.</a>
+      <ul class="hidden md:flex items-center gap-8 text-sm font-semibold text-lilac/80">
+        <li><a href="#about" class="hover:text-lilac transition" data-testid="nav-about">About</a></li>
+        <li><a href="#skills" class="hover:text-lilac transition" data-testid="nav-skills">Skills</a></li>
+        <li><a href="#projects" class="hover:text-lilac transition" data-testid="nav-projects">Projects</a></li>
+        <li><a href="#education" class="hover:text-lilac transition" data-testid="nav-education">Education</a></li>
+        <li><a href="#contact" class="hover:text-lilac transition" data-testid="nav-contact">Contact</a></li>
+        <li>
+          <a href="assets/docs/Vishwas_Patel_Resume.pdf" download="Vishwas_Patel_Resume.pdf"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-lilac text-paper hover:opacity-90 transition"
+            data-testid="navbar-resume-download">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" />
+            </svg>
+            Resume
+          </a>
+        </li>
+      </ul>
+      <button type="button" id="nav-toggle"
+        class="md:hidden p-2 rounded-xl bg-white/5 text-zinc-100 border border-white/10" aria-expanded="false"
+        aria-controls="mobile-nav" data-testid="mobile-nav-toggle">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+    <div id="mobile-nav" class="hidden md:hidden border-t border-white/10 bg-zinc-950/98 backdrop-blur-xl px-4 py-4">
+      <ul class="flex flex-col gap-3 text-sm font-medium text-zinc-200">
+        <li><a href="#about" data-testid="mobile-nav-about">About</a></li>
+        <li><a href="#skills" data-testid="mobile-nav-skills">Skills</a></li>
+        <li><a href="#projects" data-testid="mobile-nav-projects">Projects</a></li>
+        <li><a href="#education" data-testid="mobile-nav-education">Education</a></li>
+        <li><a href="#contact" data-testid="mobile-nav-contact">Contact</a></li>
+        <li>
+          <a href="assets/docs/Vishwas_Patel_Resume.pdf" download="Vishwas_Patel_Resume.pdf"
+            class="inline-flex items-center gap-2 text-blush font-semibold"
+            data-testid="mobile-nav-resume-download">Download Resume</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+    <!-- Hero — navy -->
+    <section id="hero"
+      class="theme-navy relative w-full min-h-screen flex items-center justify-center bg-paper text-lilac overflow-hidden px-4 sm:px-6"
+      data-testid="hero-section">
+      <!-- Minimal Space Layer -->
+      <div id="stars-layer" class="stars-layer" aria-hidden="true"></div>
+
+      <div class="relative z-10 max-w-5xl mx-auto pt-16 pb-24 md:pt-20 md:pb-32 text-center reveal">
+        <div class="flex justify-center mb-8">
+          <div
+            class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-lilac/20 shadow-[0_20px_60px_-15px_rgba(56,189,248,0.45)] ring-4 ring-blush/15">
+            <img src="assets/images/avatar.png" alt="Vishwas Patel — AI/ML Engineer"
+              class="w-full h-full object-cover" data-testid="hero-avatar" />
+          </div>
+        </div>
+        <p class="text-sm font-semibold text-lilac/40 mb-6 tracking-[0.2em] uppercase" data-testid="hero-role">
+          AI / ML Engineer
+        </p>
+        <h1
+          class="font-display text-6xl sm:text-8xl md:text-9xl font-bold bg-gradient-to-r from-lilac via-lilac to-blush bg-clip-text text-transparent leading-[0.95] mb-10 tracking-tighter"
+          data-testid="hero-name">
+          Vishwas Patel
+        </h1>
+        <p
+          class="text-xl sm:text-3xl font-sans font-medium text-lilac/90 mb-12 leading-relaxed max-w-3xl mx-auto tracking-tight">
+          LLMs &amp; NLP
+          <span class="text-blush font-light mx-3 opacity-50">/</span>
+          Semantic Search
+          <span class="text-blush font-light mx-3 opacity-50">/</span>
+          Scalable Backend
+        </p>
+
+        <p class="text-lilac/60 max-w-2xl mx-auto mb-12 leading-relaxed text-base sm:text-lg"
+          data-testid="hero-tagline">
+          Building AI-powered applications with LLMs, NLP, semantic search systems,
+          and scalable backend architectures.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+          <a href="#projects"
+            class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-2xl font-bold text-paper bg-lilac shadow-[0_20px_50px_-15px_rgba(var(--color-lilac),0.3)] hover:scale-105 active:scale-95 transition-all"
+            data-testid="hero-view-projects-btn">View Projects</a>
+          <a href="assets/docs/Vishwas_Patel_Resume.pdf" download="Vishwas_Patel_Resume.pdf"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-bold text-paper bg-blush shadow-[0_20px_50px_-15px_rgba(56,189,248,0.45)] hover:scale-105 active:scale-95 transition-all"
+            data-testid="hero-download-resume-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" />
+            </svg>
+            Download Resume
+          </a>
+          <a href="#contact"
+            class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-2xl font-bold text-lilac bg-lilac/5 border border-lilac/10 backdrop-blur-md hover:bg-lilac/10 transition-all"
+            data-testid="hero-contact-btn">Contact Me</a>
+        </div>
+        <div class="mt-16 text-xs sm:text-sm text-lilac/40 flex flex-wrap justify-center gap-x-6 gap-y-2 font-medium">
+          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-lilac/40"></span> AI / ML
+            Engineer</span>
+          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-lilac/40"></span> B.Tech CSE
+            • 2027</span>
+          <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-lilac/40"></span> Ahmedabad,
+            India</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About — red -->
+    <section id="about"
+      class="theme-crimson relative w-full min-h-screen flex items-center justify-center bg-paper text-lilac overflow-hidden px-4 sm:px-6"
+      data-testid="about-section">
+
+
+
+      <div class="relative z-10 max-w-5xl mx-auto w-full py-20 md:py-32 text-center reveal">
+        <h2 class="font-display text-5xl sm:text-7xl md:text-8xl font-bold text-lilac mb-12 tracking-tight">
+          About Me
+        </h2>
+
+        <div class="max-w-4xl mx-auto">
+
+
+          <p class="text-2xl sm:text-3xl font-sans font-semibold text-lilac/95 leading-snug mb-10 tracking-tight">
+            AI/ML Engineer and B.Tech Computer Science student at Darshan University,
+            focused on building intelligent systems with LLMs, NLP, and semantic
+            search. Experienced in shipping ATS intelligence platforms, AI-powered
+            assessment systems, and production-ready backend architectures.
+          </p>
+          <p class="text-2xl sm:text-1xl font-sans font-semibold text-lilac/95 leading-snug mb-10 tracking-tight">
+
+            <span class="text-blush">I enjoy turning ambiguous problems into deployable AI workflows — clean code,
+              robust pipelines, and measurable impact. Currently exploring opportunities as an AI/ML Engineer or
+              Software Developer for internships and full-time roles</span>.
+          </p>
+        </div>
+
+        <!-- Features Row -->
+        <div class="flex flex-wrap justify-center gap-6 mb-16">
+          <div class="glass-panel px-8 py-5 rounded-[2rem] border-lilac/10 bg-lilac/5 hover:bg-lilac/10 transition-all">
+            <p class="text-[0.6rem] font-bold text-lilac/40 uppercase tracking-[0.2em] mb-2">Education</p>
+            <p class="text-lg font-bold text-lilac">Darshan University</p>
+          </div>
+          <div class="glass-panel px-8 py-5 rounded-[2rem] border-lilac/10 bg-lilac/5 hover:bg-lilac/10 transition-all">
+            <p class="text-[0.6rem] font-bold text-lilac/40 uppercase tracking-[0.2em] mb-2">Expertise</p>
+            <p class="text-lg font-bold text-lilac">LLMs &amp; NLP Systems</p>
+          </div>
+          <div class="glass-panel px-8 py-5 rounded-[2rem] border-lilac/10 bg-lilac/5 hover:bg-lilac/10 transition-all">
+            <p class="text-[0.6rem] font-bold text-lilac/40 uppercase tracking-[0.2em] mb-2">Based In</p>
+            <p class="text-lg font-bold text-lilac">Ahmedabad, India</p>
+          </div>
+        </div>
+
+        <div
+          class="inline-flex items-center gap-4 px-8 py-4 rounded-3xl bg-lilac text-paper font-bold text-lg shadow-2xl hover:scale-105 active:scale-95 transition-all"
+          data-testid="about-status-badge">
+          <span class="w-3 h-3 rounded-full bg-paper animate-pulse"></span>
+          Open to AI/ML Roles &amp; Internships
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills — arctic -->
+    <section id="skills"
+      class="theme-arctic relative w-full min-h-screen flex items-center bg-paper text-lilac py-16 md:py-24 border-t border-lilac/15"
+      data-testid="skills-section">
+      <div class="section-artwork" aria-hidden="true">
+        <!-- Background Technical Grid -->
+        <svg class="absolute inset-0 w-full h-full opacity-[0.3]" fill="none">
+          <defs>
+            <pattern id="minor-grid" width="15" height="15" patternUnits="userSpaceOnUse">
+              <path d="M 15 0 L 0 0 0 15" fill="none" stroke="rgb(var(--color-lilac))" stroke-width="0.5"
+                stroke-opacity="0.2" />
+            </pattern>
+            <pattern id="major-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+              <rect width="60" height="60" fill="url(#minor-grid)" />
+              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgb(var(--color-lilac))" stroke-width="0.75"
+                stroke-opacity="0.5" />
+              <path d="M -3 0 L 3 0 M 0 -3 L 0 3" stroke="rgb(var(--color-lilac))" stroke-width="0.5"
+                stroke-opacity="0.4" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#major-grid)" />
+        </svg>
+
+        <!-- Technical Corner Markers -->
+        <div class="absolute inset-0 pointer-events-none p-4 flex flex-col justify-between opacity-20">
+          <div class="flex justify-between">
+            <span class="text-[10px] font-mono leading-none tracking-tighter">REF_001.SKILLS</span>
+            <span class="text-[10px] font-mono leading-none tracking-tighter">23.02° N / 72.57° E</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-[10px] font-mono leading-none tracking-tighter">SEC_ARCTIC_04</span>
+            <span class="text-[10px] font-mono leading-none tracking-tighter">EST_2026</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Foreground Overlay Grid (on top of everything) -->
+      <div class="absolute inset-0 pointer-events-none z-30 opacity-[0.03]" aria-hidden="true">
+        <svg class="w-full h-full" fill="none">
+          <rect width="100%" height="100%" fill="url(#major-grid)" />
+        </svg>
+      </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-14 reveal">
+          <h2 class="font-display text-5xl font-semibold text-lilac">Skills</h2>
+          <p class="text-lilac/65 mt-2 max-w-xl mx-auto">
+            Tools and strengths I bring to AI / ML teams and engineering projects.
+          </p>
+          <div class="mt-8 marquee-container">
+            <div class="marquee-content">
+              <span class="text-2xl font-display font-bold text-lilac/30">LLMs &amp; NLP</span>
+              <span class="text-2xl font-display font-bold text-lilac/30">SEMANTIC SEARCH</span>
+              <span class="text-2xl font-display font-bold text-lilac/30">FASTAPI BACKEND</span>
+              <span class="text-2xl font-display font-bold text-lilac/30">DEEP LEARNING</span>
+              <span class="text-2xl font-display font-bold text-lilac/30">PROMPT ENGINEERING</span>
+              <!-- Repeated for seamless loop -->
+              <span class="text-2xl font-display font-bold text-lilac/30">LLMs &amp; NLP</span>
+              <span class="text-2xl font-display font-bold text-lilac/30">SEMANTIC SEARCH</span>
+              <span class="text-2xl font-display font-bold text-lilac/30">FASTAPI BACKEND</span>
+              <span class="text-2xl font-display font-bold text-lilac/30">DEEP LEARNING</span>
+              <span class="text-2xl font-display font-bold text-lilac/30">PROMPT ENGINEERING</span>
+            </div>
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="glass-panel rounded-3xl p-6 reveal hover:shadow-xl transition-shadow"
+            data-testid="skill-card-languages">
+            <h3 class="font-display font-semibold text-lilac mb-4">Programming Languages</h3>
+            <ul class="flex flex-wrap gap-2">
+              <li class="skill-chip">Python</li>
+              <li class="skill-chip">Java</li>
+              <li class="skill-chip">C</li>
+              <li class="skill-chip">SQL</li>
+            </ul>
+          </article>
+          <article class="glass-panel rounded-3xl p-6 reveal reveal-delay-1 hover:shadow-xl transition-shadow"
+            data-testid="skill-card-ai-ml">
+            <h3 class="font-display font-semibold text-lilac mb-4">AI / ML</h3>
+            <ul class="flex flex-wrap gap-2">
+              <li class="skill-chip">Machine Learning</li>
+              <li class="skill-chip">Deep Learning</li>
+              <li class="skill-chip">NLP</li>
+              <li class="skill-chip">LLMs</li>
+              <li class="skill-chip">Sentence Transformers</li>
+              <li class="skill-chip">Semantic Similarity</li>
+              <li class="skill-chip">Prompt Engineering</li>
+              <li class="skill-chip">Feature Engineering</li>
+            </ul>
+          </article>
+          <article class="glass-panel rounded-3xl p-6 reveal reveal-delay-2 hover:shadow-xl transition-shadow"
+            data-testid="skill-card-frameworks">
+            <h3 class="font-display font-semibold text-lilac mb-4">Frameworks &amp; Libraries</h3>
+            <ul class="flex flex-wrap gap-2">
+              <li class="skill-chip">FastAPI</li>
+              <li class="skill-chip">Flask</li>
+              <li class="skill-chip">React.js</li>
+              <li class="skill-chip">TensorFlow</li>
+              <li class="skill-chip">PyTorch</li>
+              <li class="skill-chip">Keras</li>
+              <li class="skill-chip">Scikit-learn</li>
+              <li class="skill-chip">Pandas</li>
+              <li class="skill-chip">NumPy</li>
+              <li class="skill-chip">PySpark</li>
+            </ul>
+          </article>
+          <article class="glass-panel rounded-3xl p-6 reveal hover:shadow-xl transition-shadow"
+            data-testid="skill-card-databases">
+            <h3 class="font-display font-semibold text-lilac mb-4">Databases &amp; Tools</h3>
+            <ul class="flex flex-wrap gap-2">
+              <li class="skill-chip">MongoDB</li>
+              <li class="skill-chip">SQLite</li>
+              <li class="skill-chip">Docker</li>
+              <li class="skill-chip">Git / GitHub</li>
+              <li class="skill-chip">Railway</li>
+              <li class="skill-chip">Render</li>
+              <li class="skill-chip">Vercel</li>
+              <li class="skill-chip">PyMuPDF</li>
+            </ul>
+          </article>
+          <article
+            class="glass-panel rounded-3xl p-6 sm:col-span-2 lg:col-span-2 reveal reveal-delay-1 hover:shadow-xl transition-shadow"
+            data-testid="skill-card-apis-soft">
+            <h3 class="font-display font-semibold text-lilac mb-4">Web, APIs &amp; Strengths</h3>
+            <ul class="flex flex-wrap gap-2">
+              <li class="skill-chip">REST APIs</li>
+              <li class="skill-chip">JWT Authentication</li>
+              <li class="skill-chip">Model Training</li>
+              <li class="skill-chip">Problem Solving</li>
+              <li class="skill-chip">Clean Code</li>
+              <li class="skill-chip">Teamwork</li>
+              <li class="skill-chip">Adaptability</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects — emerald -->
+    <section id="projects"
+      class="theme-emerald relative w-full min-h-screen flex items-center bg-paper text-lilac pt-16 md:pt-24 pb-8 md:pb-12 border-t border-white/10"
+      data-testid="projects-section">
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="mb-14 reveal text-center">
+          <h2 class="font-section-title text-7xl font-extrabold text-lilac tracking-tight">Projects</h2>
+          <p class="text-lilac/65 mt-2">Selected work — LLM systems, AI assessment, and ML pipelines.</p>
+        </div>
+        <div id="projects-carousel"
+          class="flex overflow-x-auto snap-x snap-mandatory gap-16 px-[10vw] md:px-[15vw] py-12 hide-scrollbar">
+
+          <article
+            class="project-card glass-panel rounded-3xl p-10 flex flex-col border border-lilac/10 reveal shrink-0 w-[85vw] md:w-[600px] snap-center"
+            data-testid="project-card-resume-scanner">
+            <h3 class="font-project-title text-3xl font-extrabold text-lilac mb-4 tracking-tight">AI Resume Scanner</h3>
+            <p class="font-project-body text-lilac/80 text-base leading-relaxed flex-grow mb-6">
+              Built an ATS-style resume analysis platform that performs semantic
+              resume-to-job-description matching using Sentence Transformers and
+              Llama 3. Engineered recruiter-style scoring workflows, AI-generated
+              hiring insights, structured PDF parsing, and a candidate ranking
+              dashboard with analytics.
+            </p>
+            <p class="font-tech-stack text-sm font-medium text-lilac/90 mb-6">
+              FastAPI · React · Sentence Transformers · Llama 3
+            </p>
+            <div class="flex flex-wrap gap-4 mt-auto">
+              <a href="https://github.com/vishwasp1005" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center px-5 py-3 rounded-xl text-base font-semibold border border-lilac/20 bg-paper/80 hover:bg-blush/80 transition"
+                data-testid="project-resume-scanner-github">GitHub</a>
+            </div>
+          </article>
+
+          <article
+            class="project-card glass-panel rounded-3xl p-10 flex flex-col border border-lilac/10 reveal shrink-0 w-[85vw] md:w-[600px] snap-center"
+            data-testid="project-card-pdf-mcq">
+            <h3 class="font-project-title text-3xl font-extrabold text-lilac mb-4 tracking-tight">AI PDF-to-MCQ
+              Generator</h3>
+            <p class="font-project-body text-lilac/80 text-base leading-relaxed flex-grow mb-6">
+              LLM-powered assessment system that processes large PDFs into adaptive
+              MCQs at scale. Implemented streaming-based extraction, JWT auth, retry
+              handling, and analytics. Integrated an AI tutor, flashcards, leaderboard
+              tracking, and wrong-answer analysis workflows.
+            </p>
+            <p class="font-tech-stack text-sm font-medium text-lilac/90 mb-6">
+              FastAPI · React · Llama 3 · Groq
+            </p>
+            <div class="flex flex-wrap gap-4 mt-auto">
+              <a href="https://github.com/vishwasp1005/DL-PROJECT-PDF-TO-MCQ" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center px-5 py-3 rounded-xl text-base font-semibold border border-lilac/20 bg-paper/80 hover:bg-blush/80 transition"
+                data-testid="project-pdf-mcq-github">GitHub</a>
+              <a href="https://dl-project-pdf-to-mcq.vercel.app/login" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center px-5 py-3 rounded-xl text-base font-semibold bg-lilac text-paper hover:opacity-90 transition"
+                data-testid="project-pdf-mcq-live">Live Demo</a>
+            </div>
+          </article>
+
+          <article
+            class="project-card glass-panel rounded-3xl p-10 flex flex-col border border-lilac/10 reveal shrink-0 w-[85vw] md:w-[600px] snap-center"
+            data-testid="project-card-loan-risk">
+            <h3 class="font-project-title text-3xl font-extrabold text-lilac mb-4 tracking-tight">Loan Risk Prediction
+              System</h3>
+            <p class="font-project-body text-lilac/80 text-base leading-relaxed flex-grow mb-6">
+              Machine learning platform for loan-risk classification using Gradient
+              Boosting, achieving 88.64% prediction accuracy through preprocessing
+              and feature engineering. Shipped Flask APIs for real-time prediction
+              and deployed an accessible web demo for end users.
+            </p>
+            <p class="font-tech-stack text-sm font-medium text-lilac/90 mb-6">
+              Python · Flask · Scikit-learn · Gradient Boosting
+            </p>
+            <div class="flex flex-wrap gap-4 mt-auto">
+              <a href="https://github.com/vishwasp1005/loan" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center px-5 py-3 rounded-xl text-base font-semibold border border-lilac/20 bg-paper/80 hover:bg-blush/80 transition"
+                data-testid="project-loan-risk-github">GitHub</a>
+              <a href="https://web-production-445d8d.up.railway.app/login" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center px-5 py-3 rounded-xl text-base font-semibold bg-lilac text-paper hover:opacity-90 transition"
+                data-testid="project-loan-risk-live">Live Demo</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Education — beige -->
+    <section id="education"
+      class="theme-beige relative w-full min-h-screen flex items-center bg-paper text-lilac py-16 md:py-24 border-t border-lilac/15"
+      data-testid="education-section">
+      <div class="section-artwork" aria-hidden="true">
+        <svg class="absolute left-0 bottom-0 w-1/3 h-2/3 opacity-10 floating-artwork" viewBox="0 0 200 400" fill="none">
+          <rect x="20" y="20" width="160" height="360" rx="80" stroke="rgb(var(--color-blush))" stroke-width="2" />
+          <rect x="60" y="60" width="80" height="280" rx="40" stroke="rgb(var(--color-blush))" stroke-width="1" />
+        </svg>
+      </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <h2 class="font-display text-3xl font-semibold text-lilac mb-10 reveal">Education</h2>
+        <div class="relative pl-8 md:pl-0">
+          <div class="absolute left-[11px] md:left-[108px] top-2 bottom-2 w-1 rounded-full timeline-line reveal"
+            aria-hidden="true"></div>
+          <ul class="space-y-10">
+            <li class="relative flex gap-6 md:gap-10 reveal" data-testid="edu-btech">
+              <div class="hidden md:block w-24 shrink-0 text-right text-sm font-medium text-lilac/60 pt-1">
+                2023 – 2027
+              </div>
+              <div class="absolute left-0 md:left-24 top-2 w-4 h-4 rounded-full bg-lilac border-4 border-paper shadow">
+              </div>
+              <div class="glass-panel rounded-3xl p-6 flex-1 border border-lilac/10">
+                <p class="text-xs text-lilac font-semibold md:hidden mb-1">2023 – 2027</p>
+                <h3 class="font-display font-semibold text-lilac">B.Tech in Computer Science &amp; Engineering</h3>
+                <p class="text-lilac/75 mt-1">Darshan University, Rajkot · CGPA 7.54 / 10</p>
+              </div>
+            </li>
+            <li class="relative flex gap-6 md:gap-10 reveal reveal-delay-1" data-testid="edu-hsc">
+              <div class="hidden md:block w-24 shrink-0 text-right text-sm font-medium text-lilac/60 pt-1">
+                12th (HSC)
+              </div>
+              <div
+                class="absolute left-0 md:left-24 top-2 w-4 h-4 rounded-full bg-lilac/75 border-4 border-paper shadow">
+              </div>
+              <div class="glass-panel rounded-3xl p-6 flex-1 border border-lilac/10">
+                <p class="text-xs text-lilac font-semibold md:hidden mb-1">12th (HSC)</p>
+                <h3 class="font-display font-semibold text-lilac">Higher Secondary Education</h3>
+                <p class="text-lilac/75 mt-1">Percentage: 63.54%</p>
+              </div>
+            </li>
+            <li class="relative flex gap-6 md:gap-10 reveal reveal-delay-2" data-testid="edu-ssc">
+              <div class="hidden md:block w-24 shrink-0 text-right text-sm font-medium text-lilac/60 pt-1">
+                10th (SSC)
+              </div>
+              <div
+                class="absolute left-0 md:left-24 top-2 w-4 h-4 rounded-full bg-lilac/55 border-4 border-paper shadow">
+              </div>
+              <div class="glass-panel rounded-3xl p-6 flex-1 border border-lilac/10">
+                <p class="text-xs text-lilac font-semibold md:hidden mb-1">10th (SSC)</p>
+                <h3 class="font-display font-semibold text-lilac">Secondary School Education</h3>
+                <p class="text-lilac/75 mt-1">Percentage: 88.33%</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Certifications (inline within education section to preserve UI structure) -->
+        <div class="mt-14 reveal" data-testid="certifications-block">
+          <h3 class="font-display text-2xl font-semibold text-lilac mb-6">Certifications</h3>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="glass-panel rounded-3xl p-5 border border-lilac/10" data-testid="cert-tata-genai">
+              <p class="text-[0.6rem] font-bold text-lilac/50 uppercase tracking-[0.2em] mb-1">Forage · Tata</p>
+              <p class="text-base font-semibold text-lilac">GenAI Powered Data Analytics Job Simulation</p>
+            </div>
+            <div class="glass-panel rounded-3xl p-5 border border-lilac/10" data-testid="cert-tata-dataviz">
+              <p class="text-[0.6rem] font-bold text-lilac/50 uppercase tracking-[0.2em] mb-1">Forage · Tata</p>
+              <p class="text-base font-semibold text-lilac">Data Visualisation: Empowering Business with Effective
+                Insights</p>
+            </div>
+          </div>
+        </div>
+
+        <p
+          class="mt-10 text-center text-lilac/85 max-w-2xl mx-auto reveal bg-blush/40 rounded-2xl px-6 py-4 border border-lilac/10">
+          Actively seeking AI/ML internships and full-time engineering opportunities
+          to ship real-world, production-ready systems.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- Contact — slate gray -->
+    <section id="contact"
+      class="theme-slate-gray relative w-full min-h-screen flex items-center bg-paper text-lilac py-16 md:py-24 border-t border-lilac/15"
+      data-testid="contact-section">
+      <div class="section-artwork" aria-hidden="true">
+        <svg class="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 1000 1000" fill="none">
+          <line x1="0" y1="0" x2="1000" y2="1000" stroke="rgb(var(--color-blush))" stroke-width="1"
+            stroke-dasharray="5 5" />
+          <line x1="1000" y1="0" x2="0" y2="1000" stroke="rgb(var(--color-blush))" stroke-width="1"
+            stroke-dasharray="5 5" />
+        </svg>
+      </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="max-w-3xl mx-auto text-center reveal">
+          <h2 class="font-display text-4xl font-semibold text-lilac mb-4">Contact</h2>
+          <p class="text-lilac/80 mb-10 text-lg">
+            Let&apos;s talk about AI/ML internships, full-time roles, collaborations, or just tech. Always open to a
+            good conversation.
+          </p>
+          <div
+            class="glass-panel rounded-3xl p-8 border border-lilac/10 flex flex-col sm:flex-row justify-between text-left gap-8">
+            <div class="space-y-6 flex-1">
+              <div>
+                <span class="text-lilac/60 text-sm block mb-1">Email</span>
+                <a href="mailto:patelvishwas702@gmail.com"
+                  class="font-medium text-lilac underline decoration-lilac/25 hover:decoration-lilac/60 break-all"
+                  data-testid="contact-email">patelvishwas702@gmail.com</a>
+              </div>
+              <div>
+                <span class="text-lilac/60 text-sm block mb-1">Phone</span>
+                <a href="tel:+919408657542" class="font-medium hover:opacity-80" data-testid="contact-phone">+91
+                  9408657542</a>
+              </div>
+              <div>
+                <span class="text-lilac/60 text-sm block mb-1">Location</span>
+                <p class="font-medium text-lilac" data-testid="contact-location">Ahmedabad, Gujarat, India</p>
+              </div>
+            </div>
+            <div class="space-y-6 flex-1">
+              <div>
+                <span class="text-lilac/60 text-sm block mb-1">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/vishwas-patel-ba91a2288/" target="_blank" rel="noopener noreferrer"
+                  class="font-medium text-lilac underline decoration-lilac/25 hover:decoration-lilac/60 break-all"
+                  data-testid="contact-linkedin">linkedin.com/in/vishwas-patel-ba91a2288</a>
+              </div>
+              <div>
+                <span class="text-lilac/60 text-sm block mb-1">GitHub</span>
+                <a href="https://github.com/vishwasp1005" target="_blank" rel="noopener noreferrer"
+                  class="font-medium text-lilac underline decoration-lilac/25 hover:decoration-lilac/60 break-all"
+                  data-testid="contact-github">github.com/vishwasp1005</a>
+              </div>
+              <div>
+                <span class="text-lilac/60 text-sm block mb-1">LeetCode</span>
+                <a href="https://leetcode.com/u/Vishwaspatel10/" target="_blank" rel="noopener noreferrer"
+                  class="font-medium text-lilac underline decoration-lilac/25 hover:decoration-lilac/60 break-all"
+                  data-testid="contact-leetcode">leetcode.com/u/Vishwaspatel10</a>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 flex justify-center">
+            <a href="assets/docs/Vishwas_Patel_Resume.pdf" download="Vishwas_Patel_Resume.pdf"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-bold text-paper bg-blush shadow-[0_20px_50px_-15px_rgba(56,189,248,0.45)] hover:scale-105 active:scale-95 transition-all"
+              data-testid="contact-download-resume">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2.2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" />
+              </svg>
+              Download Resume
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="theme-navy relative z-10 w-full border-t border-lilac/20 bg-paper text-lilac py-10 mt-0"
+    data-testid="site-footer">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center text-lilac/65 text-sm">
+      <p>Designed &amp; Built by Vishwas Patel · <span id="year"></span></p>
+    </div>
+  </footer>
+
+  <div id="root"></div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
