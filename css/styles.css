@@ -2158,16 +2158,97 @@ section {
 }
 
 /* ============================================================
-   MOBILE RESPONSIVENESS FIXES
+   GLOBAL OVERFLOW GUARD
    ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
 
-/* Prevent horizontal overflow on all screens */
 img, svg, video, canvas, audio, iframe, embed, object {
   max-width: 100%;
 }
 
-/* Mobile: use proximity snap so users aren't trapped in tall sections */
-@media (max-width: 768px) {
+/* ============================================================
+   SKILL CHIPS — wrap inside cards on all screen sizes
+   ============================================================ */
+.skill-chip {
+  white-space: normal;        /* allow text to wrap if needed */
+  word-break: break-word;
+  max-width: 100%;
+}
+
+/* ============================================================
+   PROJECTS — MOBILE: vertical stack, DESKTOP: horizontal carousel
+   ============================================================ */
+
+/* Mobile (< 768px): turn off carousel, stack cards vertically */
+@media (max-width: 767px) {
+  #projects-carousel {
+    flex-direction: column !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    scroll-snap-type: none !important;
+    gap: 1.5rem !important;
+    padding: 1rem 1rem 2rem !important;
+    align-items: stretch !important;
+  }
+
+  .project-card {
+    /* Reset all carousel 3D effects for mobile */
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex-shrink: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    min-height: auto !important;
+    scroll-snap-align: none !important;
+    cursor: default !important;
+  }
+
+  .project-card.is-active {
+    transform: none !important;
+    box-shadow: 0 8px 32px -8px rgba(0,0,0,0.3) !important;
+  }
+
+  .project-card:hover:not(.is-active) {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Tablet (768px–1023px): carousel works but with tighter padding */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #projects-carousel {
+    padding-left: 8vw;
+    padding-right: 8vw;
+    gap: 10vw;
+  }
+
+  .project-card {
+    min-height: 420px;
+    width: 80vw !important;
+  }
+}
+
+/* Desktop (1024px+): full carousel experience */
+@media (min-width: 1024px) {
+  .project-card {
+    min-height: 480px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .project-card {
+    min-height: 500px;
+  }
+}
+
+/* ============================================================
+   MOBILE MISC FIXES
+   ============================================================ */
+
+/* Use proximity snap so users aren't locked in tall sections */
+@media (max-width: 767px) {
   html {
     scroll-snap-type: y proximity;
   }
@@ -2176,117 +2257,65 @@ img, svg, video, canvas, audio, iframe, embed, object {
     scroll-snap-stop: normal;
   }
 
-  /* Reduce star count impact on low-powered devices */
   .stars-layer {
     opacity: 0.6;
   }
 
-  /* Hero section adjustments */
+  /* Hero */
   #hero .relative.z-10 {
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
 
-  /* Avatar sizing on small screens */
-  #hero .w-32 {
-    width: 7rem;
-    height: 7rem;
-  }
-
-  /* Project carousel: ensure cards don't overflow */
-  #projects-carousel {
-    padding-left: 6vw;
-    padding-right: 6vw;
-    gap: 1rem;
-  }
-
-  .project-card {
-    min-height: 380px;
-    transform: scale(0.9);
-  }
-
-  .project-card.is-active {
-    transform: scale(1);
-  }
-
-  /* Skills marquee on small screens */
-  .marquee-content {
-    gap: 1.5rem;
-  }
-
-  .marquee-content span {
-    font-size: 1.25rem;
-  }
-
-  /* Education timeline on mobile */
+  /* Education timeline */
   .timeline-line {
     display: none;
   }
 
-  /* Contact links: allow proper break */
+  /* Contact links */
   a[href^="https"], a[href^="http"] {
     word-break: break-all;
     overflow-wrap: break-word;
   }
 
-  /* Feature cards in About: ensure they don't overflow */
-  .glass-panel.px-8 {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
-  /* Skill chips: smaller gap */
+  /* Skill chips: slightly smaller on mobile */
   .skill-chip {
-    padding: 0.4rem 1rem;
+    padding: 0.4rem 0.875rem;
     font-size: 0.8rem;
   }
-}
 
-/* Tablet adjustments (768px–1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
-  #projects-carousel {
-    padding-left: 10vw;
-    padding-right: 10vw;
-  }
-
-  .project-card {
-    min-height: 420px;
+  /* Skills marquee */
+  .marquee-content span {
+    font-size: 1.1rem;
   }
 }
 
-/* Large screens */
-@media (min-width: 1280px) {
-  .project-card {
-    min-height: 500px;
-  }
-}
-
-/* Mobile nav: ensure links are tappable */
-#mobile-nav a {
-  display: block;
-  padding: 0.5rem 0;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-}
-
-/* Ensure hero section content doesn't clip on very small screens */
+/* Very small screens (< 380px) */
 @media (max-width: 380px) {
   #hero .relative.z-10 {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
 
-  /* Hero role text */
   #hero [data-testid="hero-role"] {
     letter-spacing: 0.1em;
     font-size: 0.7rem;
   }
 }
 
-/* Fix scroll on iOS Safari */
-@supports (-webkit-overflow-scrolling: touch) {
-  #projects-carousel {
-    -webkit-overflow-scrolling: touch;
+/* Mobile nav tappable targets */
+#mobile-nav a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+/* iOS Safari momentum scroll on carousel (desktop only) */
+@media (min-width: 768px) {
+  @supports (-webkit-overflow-scrolling: touch) {
+    #projects-carousel {
+      -webkit-overflow-scrolling: touch;
+    }
   }
 }
