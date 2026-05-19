@@ -2319,3 +2319,57 @@ img, svg, video, canvas, audio, iframe, embed, object {
     }
   }
 }
+
+/* ============================================================
+   MOBILE NAV DROPDOWN — guaranteed dark, always visible
+   ============================================================ */
+#mobile-nav {
+  background: rgb(9, 9, 11) !important;
+  position: relative;
+  z-index: 50;
+}
+
+#mobile-nav a {
+  color: rgb(200, 200, 220) !important;
+  display: block;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+}
+
+#mobile-nav a:active,
+#mobile-nav a:hover {
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   SKILLS GRID — single column on mobile so chips have full width
+   ============================================================ */
+@media (max-width: 639px) {
+  /* Override any grid that tries to put skill cards side by side */
+  #skills .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Each skill card gets full width */
+  #skills article {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Chips wrap freely — no overflow */
+  #skills .skill-chip {
+    white-space: normal !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+
+  /* Full width for the wide card (sm:col-span-2 lg:col-span-2) */
+  #skills article[data-testid="skill-card-apis-soft"] {
+    grid-column: span 1 !important;
+  }
+}
