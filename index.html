@@ -34,7 +34,7 @@
     data-testid="site-header">
     <nav class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16" aria-label="Main">
       <a href="#hero" class="font-display font-bold text-xl text-lilac tracking-tight"
-        data-testid="brand-link">Vishwas Patel</a>
+        data-testid="brand-link">Vishwas.</a>
       <ul class="hidden md:flex items-center gap-8 text-sm font-semibold text-lilac/80">
         <li><a href="#about" class="hover:text-lilac transition" data-testid="nav-about">About</a></li>
         <li><a href="#skills" class="hover:text-lilac transition" data-testid="nav-skills">Skills</a></li>
@@ -62,17 +62,17 @@
         </svg>
       </button>
     </nav>
-    <div id="mobile-nav" class="hidden md:hidden border-t border-white/10 bg-zinc-950/98 backdrop-blur-xl px-4 py-4">
-      <ul class="flex flex-col gap-3 text-sm font-medium text-zinc-200">
-        <li><a href="#about" data-testid="mobile-nav-about">About</a></li>
-        <li><a href="#skills" data-testid="mobile-nav-skills">Skills</a></li>
-        <li><a href="#projects" data-testid="mobile-nav-projects">Projects</a></li>
-        <li><a href="#education" data-testid="mobile-nav-education">Education</a></li>
-        <li><a href="#contact" data-testid="mobile-nav-contact">Contact</a></li>
-        <li>
+    <div id="mobile-nav" class="hidden md:hidden border-t border-white/10 px-4 py-4" style="background: rgb(9,9,11); position: relative; z-index: 50;">
+      <ul style="display: flex; flex-direction: column; gap: 0.75rem; list-style: none; margin: 0; padding: 0;">
+        <li><a href="#about" style="display: block; padding: 0.6rem 0; font-size: 1rem; font-weight: 600; color: rgb(200,200,220); text-decoration: none;" data-testid="mobile-nav-about">About</a></li>
+        <li><a href="#skills" style="display: block; padding: 0.6rem 0; font-size: 1rem; font-weight: 600; color: rgb(200,200,220); text-decoration: none;" data-testid="mobile-nav-skills">Skills</a></li>
+        <li><a href="#projects" style="display: block; padding: 0.6rem 0; font-size: 1rem; font-weight: 600; color: rgb(200,200,220); text-decoration: none;" data-testid="mobile-nav-projects">Projects</a></li>
+        <li><a href="#education" style="display: block; padding: 0.6rem 0; font-size: 1rem; font-weight: 600; color: rgb(200,200,220); text-decoration: none;" data-testid="mobile-nav-education">Education</a></li>
+        <li><a href="#contact" style="display: block; padding: 0.6rem 0; font-size: 1rem; font-weight: 600; color: rgb(200,200,220); text-decoration: none;" data-testid="mobile-nav-contact">Contact</a></li>
+        <li style="padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
           <a href="/assets/docs/Vishwas_Patel_Resume.pdf" download="Vishwas_Patel_Resume.pdf"
-            class="inline-flex items-center gap-2 text-blush font-semibold"
-            data-testid="mobile-nav-resume-download">Download Resume</a>
+            style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; font-weight: 700; color: #38bdf8; text-decoration: none;"
+            data-testid="mobile-nav-resume-download">⬇ Download Resume</a>
         </li>
       </ul>
     </div>
@@ -264,7 +264,7 @@
             </div>
           </div>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <article class="glass-panel rounded-3xl p-6 reveal hover:shadow-xl transition-shadow"
             data-testid="skill-card-languages">
             <h3 class="font-display font-semibold text-lilac mb-4">Programming Languages</h3>
@@ -281,8 +281,8 @@
             <ul class="flex flex-wrap gap-2">
               <li class="skill-chip">Machine Learning</li>
               <li class="skill-chip">Deep Learning</li>
-              <li class="skill-chip">NLP & RAGs</li>
-              <li class="skill-chip">LLMs & GenAI</li>
+              <li class="skill-chip">NLP</li>
+              <li class="skill-chip">LLMs</li>
               <li class="skill-chip">Sentence Transformers</li>
               <li class="skill-chip">Semantic Similarity</li>
               <li class="skill-chip">Prompt Engineering</li>
@@ -331,7 +331,6 @@
               <li class="skill-chip">Clean Code</li>
               <li class="skill-chip">Teamwork</li>
               <li class="skill-chip">Adaptability</li>
-              <li class="skill-chip">Communication</li>
             </ul>
           </article>
         </div>
